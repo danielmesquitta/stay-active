@@ -4,7 +4,7 @@ This is a CLI application designed to help avoid micromanagement. Use it alongsi
 
 ![Demo](doc/preview.gif?raw=true "Demo")
 
-Micromanagement can be a reality we all face at times, and this tool helps address that by keeping your Slack status active. Slack considers users active when they interact with the app at least every 30 minutes. By using this application, you can set it up according to your preferences, open a chat with yourself, and step away as needed.
+Micromanagement is something we may all experience from time to time, and this tool provides a solution by helping keep your Slack status set to "online." Slack automatically marks users as "active" when they interact with the app at least once every 30 minutes. With this application, you can open a chat with yourself and let it run to keep your status active, allowing you to step away as needed without appearing offline.
 
 ## Requirements
 
