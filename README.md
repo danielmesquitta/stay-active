@@ -11,14 +11,27 @@ Micromanagement is something we may all experience from time to time, and this t
 - [Go (Golang) >= 1.23.2](https://go.dev/doc/install)
 - [Robotgo requirements](https://github.com/go-vgo/robotgo#user-content-requirements): Make sure to install every requirement for your OS
 
-## How to run
+## Installation & usage
+
+To install, you can run:
+
+```bash
+go install github.com/danielmesquitta/stay-active@latest
+```
+
+Now, to start, run:
+
+```bash
+stay-active
+```
+
+## How to run locally
 
 Simply run:
 
 ```bash
 make install
 make run
-
 ```
 
 That's it! Now, your computer will continue pressing keys until you either terminate this application or the timeout period ends.
