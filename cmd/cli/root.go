@@ -1,4 +1,4 @@
-package main
+package cli
 
 import (
 	"context"
@@ -15,7 +15,7 @@ import (
 	"github.com/danielmesquitta/stay-active/internal/app/cli"
 )
 
-func main() {
+func Run() {
 	startedAt := time.Now()
 
 	quit := make(chan os.Signal, 1)

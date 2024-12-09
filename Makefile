@@ -7,4 +7,4 @@ install:
 update:
 	@go mod tidy && go get -u ./...
 run:
-	@go run ./cmd/cli/main.go
+	@go run ./main.go
