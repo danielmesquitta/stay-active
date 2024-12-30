@@ -16,8 +16,6 @@ import (
 )
 
 func Run() {
-	startedAt := time.Now()
-
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 
@@ -37,6 +35,8 @@ func Run() {
 		interval,
 	)
 
+	startedAt := time.Now()
+
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
 		timeout,
@@ -45,14 +45,20 @@ func Run() {
 
 	go func() {
 		for {
+			ch := make(chan struct{})
+			defer close(ch)
+			go func() {
+				time.Sleep(interval)
+				randomLetter := string(rune(rand.Intn(26) + 'a'))
+				robotgo.TypeStr(randomLetter)
+				ch <- struct{}{}
+			}()
+
 			select {
 			case <-ctx.Done():
 				quit <- syscall.SIGINT
 				return
-			default:
-				time.Sleep(interval)
-				randomLetter := string(rune(rand.Intn(26) + 'a'))
-				robotgo.TypeStr(randomLetter)
+			case <-ch:
 			}
 		}
 	}()
