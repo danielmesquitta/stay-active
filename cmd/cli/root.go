@@ -29,9 +29,13 @@ func Run() {
 		return
 	}
 
+	now := time.Now()
+	stopsAt := now.Add(timeout)
+
 	fmt.Printf(
-		"Program will run for %s pressing one random letter every %s\n",
+		"Program will run for %s until %s, typing a random letter every %s\n",
 		timeout,
+		stopsAt.Format(time.Kitchen),
 		interval,
 	)
 

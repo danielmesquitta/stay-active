@@ -13,7 +13,7 @@ import (
 
 const (
 	defaultInterval = 5
-	defaultTimeout  = 90
+	defaultTimeout  = 1.5
 )
 
 var (
@@ -106,7 +106,7 @@ func initialModel() model {
 	inputs[intervalKey].Validate = intervalValidator
 
 	inputs[timeoutKey] = textinput.New()
-	inputs[timeoutKey].Placeholder = fmt.Sprintf("%d", defaultTimeout)
+	inputs[timeoutKey].Placeholder = fmt.Sprintf("%.1f", defaultTimeout)
 	inputs[timeoutKey].CharLimit = 4
 	inputs[timeoutKey].Width = defaultWidth
 	inputs[timeoutKey].Prompt = ""
@@ -190,7 +190,7 @@ func (m model) View() string {
 			Render("How often should I press a key? (in minutes)"),
 		m.inputs[intervalKey].View(),
 		inputStyle.Width(defaultWidth).
-			Render("How much time should I run? (in minutes)"),
+			Render("How much time should I run? (in hours)"),
 		m.inputs[timeoutKey].View(),
 		errMsg,
 		continueStyle.Render("Continue ->"),
@@ -206,14 +206,14 @@ func (m *model) setValues() {
 
 	strTimeout := m.inputs[timeoutKey].Value()
 	if strTimeout == "" {
-		strTimeout = fmt.Sprintf("%d", defaultTimeout)
+		strTimeout = fmt.Sprintf("%f", defaultTimeout)
 	}
 
 	float64Interval, _ := strconv.ParseFloat(strInterval, 64)
 	interval = time.Duration(float64Interval * float64(time.Minute))
 
 	float64Timeout, _ := strconv.ParseFloat(strTimeout, 64)
-	timeout = time.Duration(float64Timeout * float64(time.Minute))
+	timeout = time.Duration(float64Timeout * float64(time.Hour))
 }
 
 // validateInputs returns true if all inputs are valid
