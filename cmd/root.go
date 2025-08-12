@@ -57,8 +57,10 @@ func runAutoPress(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	printf("Starting auto-press: pressing random letters every %s for %s\n",
-		parsedInterval, parsedDuration)
+	durationUntil := time.Now().Add(parsedDuration)
+
+	printf("Starting with %s interval and %s duration, running until %s\n",
+		parsedInterval, parsedDuration, durationUntil.Format(time.TimeOnly))
 
 	ticker := time.NewTicker(parsedInterval)
 	defer ticker.Stop()
