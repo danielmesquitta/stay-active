@@ -1,29 +1,40 @@
 # Stay Active
 
-This is a CLI application designed to help avoid micromanagement. Use it alongside your Slack app (or any other platform you find useful), especially if you need to take a quick break or deal with an emergency and don’t want to lose any of your daily hours from your paycheck.
+A CLI application that helps you maintain an "active" status on Slack and other apps by automatically pressing random keys at specified intervals. This tool is designed to prevent micromanagement issues by keeping your system active when you need to step away briefly.
 
-Micromanagement is something we may all experience from time to time, and this tool provides a solution by helping keep your Slack status set to "online". Slack automatically marks users as "active" when they interact with the app at least once every 30 minutes. With this application, you can open a chat with yourself and let it run to keep your status active, allowing you to step away as needed without appearing offline.
-
-## Requirements
+## 📋 Requirements
 
 - [Go (Golang)](https://go.dev/doc/install)
 
-## Installation & usage
-
-To install, you can run:
+## 🚀 Installation
 
 ```bash
 go install github.com/danielmesquitta/stay-active@latest
 ```
 
-Now, to start, run:
+## 💻 Usage
+
+### Basic Usage
 
 ```bash
+# Default: Press a key every 1 minute for 1 hour 30 minutes
+stay-active
+
+# Custom interval and duration
 stay-active --interval 5m --duration 1h --verbose
+
+# Short flags
+stay-active -i 30s -d 2h30m -v
+
+# Raw numbers (treated as minutes)
+stay-active --interval 2 --duration 45
 ```
 
-If you want to know the command with more details, run:
+### Command Line Options
 
-```bash
-stay-active --help
-```
+| Flag | Short | Default | Description |
+|------|-------|---------|-------------|
+| `--help` | `-h` | - | Help for stay-active |
+| `--interval` | `-i` | `1m` | How often to press a key (e.g., `30s`, `5m`, `1h`, `1h30m`, or raw number in minutes) |
+| `--duration` | `-d` | `1h30m` | How long to run the application (e.g., `30s`, `5m`, `1h`, `1h30m`, or raw number in minutes) |
+| `--verbose` | `-v` | `false` | Enable verbose output to see what's happening |
