@@ -1,7 +1,7 @@
 package main
 
-import "github.com/danielmesquitta/stay-active/cmd/cli"
+import "github.com/danielmesquitta/stay-active/cmd"
 
 func main() {
-	cli.Run()
+	cmd.Execute()
 }
